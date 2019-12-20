@@ -86,20 +86,34 @@ class Page extends CI_Controller
 			$data = $this->M_page->cek_eksisting($KodeSifataru);
 
 
-			
+
 			// echo $data;
 			if ($data >= 1) {
 				// sudah ada
 				echo "ada";
 				//var_dump($data);
 
-				$KodeToString = (string)$KodeSifataru;
-				$lima_terakhir = substr($KodeToString,19,5);
-				$tambah =(int)$lima_terakhir + 1;
+				//Convert to string
+				$KodeToString = (string) $KodeSifataru;
 
-				$SifataruCode = $Tahun . $PNCode . $AreaCode . $tambah;
+				//Ambil 5 digit terakhir kode sifatatu
+				$lima_terakhir = substr($KodeToString, 19, 5);
 
-				
+				//Tambah 1
+				$tambah = (int)$lima_terakhir + 1;
+
+				//Zero Fill
+				$kodeterakhir= sprintf('%05d', $tambah);
+
+
+				$SifataruCode = $Tahun . $PNCode . $AreaCode . $kodeterakhir;
+
+				//ZeroFill 
+				//$filled_int = sprintf("%04d", $your_int);
+				//Zerofill
+				// $number = 15;
+				// $length = 5;
+				// echo str_pad($number, $zeros, '0', STR_PAD_LEFT); // result 00015
 
 				$data = array(
 
@@ -112,10 +126,6 @@ class Page extends CI_Controller
 
 				$this->session->set_flashdata("a", "Data Berhasil Diedit");
 				redirect('page/index');
-
-				
-
-				
 			} else {
 				// belum ada
 				//echo "eweuh";
@@ -131,10 +141,7 @@ class Page extends CI_Controller
 
 				$this->session->set_flashdata("a", "Data Berhasil Diedit");
 				redirect('page/index');
-
-						
 			}
-
 		}
 	}
 }
