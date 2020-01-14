@@ -108,12 +108,6 @@ class Page extends CI_Controller
 
 				$SifataruCode = $Tahun . $PNCode . $AreaCode . $kodeterakhir;
 
-				//ZeroFill 
-				//$filled_int = sprintf("%04d", $your_int);
-				//Zerofill
-				// $number = 15;
-				// $length = 5;
-				// echo str_pad($number, $zeros, '0', STR_PAD_LEFT); // result 00015
 
 				$data = array(
 
