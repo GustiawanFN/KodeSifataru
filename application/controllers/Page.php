@@ -95,7 +95,7 @@ class Page extends CI_Controller
 
 				//Convert to string
 				$KodeToString = (string) $KodeSifataru;
-
+  
 				//Ambil 5 digit terakhir kode sifatatu
 				$lima_terakhir = substr($KodeToString, 19, 5);
 

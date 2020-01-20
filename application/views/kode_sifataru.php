@@ -69,7 +69,7 @@
                       <td><?php echo $value->PrioritasNasionalId ?></td>
                       <td><?php echo $value->CodePrioritas ?></td> -->
 
-                        <td><a href='<?php echo base_url(); ?>index.php/page/generate_kode_sifataru/<?php echo $value->Id ?>'  class='btn btn-primary'>Generate</a></td>
+                        <td><a href='<?php echo base_url(); ?>index.php/generate/generate_kode/<?php echo $value->Id ?>' class='btn btn-primary'>Generate</a></td>
 
 
                       </tr>

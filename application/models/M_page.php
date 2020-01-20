@@ -27,6 +27,8 @@ class M_Page extends CI_Model
         return $this->db->query($query)->num_rows();
     }
 
+    
+
 
    
 }
