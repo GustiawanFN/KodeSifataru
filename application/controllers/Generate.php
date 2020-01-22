@@ -80,17 +80,27 @@ class Generate extends CI_Controller
                 //Jika kode baru maka input
                 $this->input($KodeSifataru, $Id);
             } else if ($data == 1) {
-                echo "data ada, kode sifataru = " .$KodeSifataru .'</br>';
-                //trim 5 digit terakhir
+
+                //buang 5 digit terakhir
                 $KodeToString = (string) $KodeSifataru;
-				$kodesifata = substr($KodeToString, 0, 19);
+                $kodesifata = substr($KodeToString, 0, 19);
 
-                
-                echo "Trim 5 terakhir ".$kodesifata .'</br>';
+                // ambil data esksisting terbesar
+                $dataa = $this->M_page->cek_kode_terbesar($kodesifata)->result();
+                //  var_dump(((array) $dataa[0]) ['kode_paling_gede']);
+                $kode_paling_gede = ((array) $dataa[0])['kode_paling_gede'];
 
+                // potong 5 digit terakhir dari data eksisting terbesar
+                $lima_terakhir = substr($kode_paling_gede, 19, 5);
 
-                $dataa['dataa'] = $this->M_page->cek_kode_terbesar($kodesifata)->result();
-                var_dump($dataa);
+                // tambah 1 di 5 digit terakhir
+                $tambah = sprintf ("%05d", $lima_terakhir + 1);
+
+                //Kode Sifataru 
+                $KodeSifataru = $kodesifata . $tambah;
+
+                //input
+                $this->input($KodeSifataru, $Id);
             }
         }
     }

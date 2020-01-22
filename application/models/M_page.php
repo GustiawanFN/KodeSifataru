@@ -28,7 +28,7 @@ class M_Page extends CI_Model
     }
 
     function cek_kode_terbesar($kodesifata){
-       $query ="SELECT MAX(KodeSifataru) FROM v_doktek WHERE KodeSifataru LIKE '$kodesifata%'";
+       $query ="SELECT MAX(KodeSifataru) as kode_paling_gede FROM v_doktek WHERE KodeSifataru LIKE '$kodesifata%'";
        return $this->db->query($query);
 
 
