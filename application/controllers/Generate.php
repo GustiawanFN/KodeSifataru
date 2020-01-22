@@ -74,23 +74,28 @@ class Generate extends CI_Controller
 
             //cek sebelum input
             $data = $this->M_page->cek_eksisting($KodeSifataru);
-            //$data = $this->cek_kode_eksisting($KodeSifataru);
+
 
             if ($data == 0) {
                 //Jika kode baru maka input
                 $this->input($KodeSifataru, $Id);
-               
             } else if ($data == 1) {
-                echo "data ada ";
-                echo $data;
-                //ambil digit terakhir yang terbesar
-                //ditambah 1
-                //input
+                echo "data ada, kode sifataru = " .$KodeSifataru .'</br>';
+                //trim 5 digit terakhir
+                $KodeToString = (string) $KodeSifataru;
+				$kodesifata = substr($KodeToString, 0, 19);
+
+                
+                echo "Trim 5 terakhir ".$kodesifata .'</br>';
+
+
+                $dataa['dataa'] = $this->M_page->cek_kode_terbesar($kodesifata)->result();
+                var_dump($dataa);
             }
         }
     }
 
-    
+
 
     public function input($KodeSifataru, $Id)
     {

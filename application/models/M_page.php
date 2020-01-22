@@ -18,14 +18,24 @@ class M_Page extends CI_Model
 
     function get_by_id($Id){
 
-        $query = 'select * from v_doktek where Id = '.$Id;
+        $query = 'SELECT * FROM v_doktek where Id = '.$Id;
         return $this->db->query($query);
     }
 
     function cek_eksisting($KodeSifataru){
-        $query = 'select * from v_doktek where KodeSifataru = '.$KodeSifataru;
+        $query = "SELECT KodeSifataru FROM v_doktek WHERE KodeSifataru = '$KodeSifataru'";
         return $this->db->query($query)->num_rows();
     }
+
+    function cek_kode_terbesar($kodesifata){
+       $query ="SELECT MAX(KodeSifataru) FROM v_doktek WHERE KodeSifataru LIKE '$kodesifata%'";
+       return $this->db->query($query);
+
+
+    //    SELECT MAX(KodeSifataru) FROM v_doktek WHERE KodeSifataru LIKE '2019030301011205000%' LIMIT 1 
+
+    }
+
 
     
 
