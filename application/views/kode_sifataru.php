@@ -19,6 +19,7 @@
           <div class="card">
             <div class="header">
               <h2></h2>
+              <a href='index.php/generate/generate_all/' class='btn btn-primary'>Generate All</a>
             </div>
             <div class="body">
               <div class="table-responsive">
